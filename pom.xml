@@ -13,6 +13,9 @@
         <scalaVersion>2.10.3</scalaVersion>
         <slickVersion>2.1.0-SNAPSHOT</slickVersion>
         <javaVersion>1.7</javaVersion>
+        <license.inceptionYear>2014</license.inceptionYear>
+        <license.organizationName>KangWoo, Lee</license.organizationName>
+        <license.licenseName>apache_v2</license.licenseName>
     </properties>
 
     <repositories>
@@ -55,6 +58,30 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>license</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>update-file-header</goal>
+                            <goal>update-project-license</goal>
+                        </goals>
+                        <configuration>
+                            <licenseName>apache_v2</licenseName>
+                            <roots>
+                                <root>src/main</root>
+                            </roots>
+                            <extraExtensions>
+                                <scala>java</scala>
+                            </extraExtensions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
